@@ -123,6 +123,7 @@ class OAuthDataGetter {
     result.email = data2.elements[0]['handle~'].emailAddress
     return result
   }
+
   async getMicrosoftData (access) {
     const result = {
       email: null,
@@ -139,8 +140,8 @@ class OAuthDataGetter {
       json: true
     })
     result.id = data.id
-    result.name = data.givenName
-    result.email = data.mail
+    result.name = data.displayName || data.givenName
+    result.email = data.mail || data.userPrincipalName
     result.avatar_url = undefined
     return result
   }
